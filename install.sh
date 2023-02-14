@@ -30,7 +30,7 @@ install_variable () {
 printf "\nDone with configuration. Installing...\n\n"
 
 # Partition disk
-cfdisk /dev/$disk
+cfdisk $disk
 
 # Format partitions
 mkfs.fat -F 32 $part1                      # boot partition
