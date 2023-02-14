@@ -8,7 +8,7 @@ sudo loadkeys it
 while :
 do
     sudo fdisk -l
-    printf "\nDisk to install to (e.g. sda): " && read disk
+    printf "\nDisk to install to (e.g. /dev/sda): " && read disk
     [[ -b $disk ]] && break
 done
 # Partition name
@@ -33,10 +33,10 @@ printf "\nDone with configuration. Installing...\n\n"
 cfdisk /dev/$disk
 
 # Format partitions
-mkfs.fat -F 32 /dev/$part1                      # boot partition
-fatlabel /dev/$part1 ESP
-mkswap -L SWAP /dev/$part2                      # swap partition
-mkfs.ext4 -L ROOT /dev/$part3                   # root partition
+mkfs.fat -F 32 $part1                      # boot partition
+fatlabel $part1 ESP
+mkswap -L SWAP $part2                      # swap partition
+mkfs.ext4 -L ROOT $part3                   # root partition
 
 # Mount partitions
 swapon /dev/disk/by-label/SWAP                  # mount swap
