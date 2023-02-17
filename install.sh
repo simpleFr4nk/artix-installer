@@ -15,12 +15,6 @@ done
 part1="$disk"1
 part2="$disk"2
 part3="$disk"3
-# Timezone
-region_city=Europe/Rome
-# Hostname
-my_hostname=Arti
-# User
-user=ef
 
 printf "\nDone with configuration. Installing...\n\n"
 
@@ -50,11 +44,7 @@ basestrap /mnt linux linux-firmware linux-headers mkinitcpio
 # Create fstab
 fstabgen -U /mnt > /mnt/etc/fstab
 
-chroot_vars () {
-    echo region_city=$region_city my_hostname=$my_hostname user=$user
-}
-
 # Chroot
-sudo cp chroot-part.sh /mnt/ && sudo "$(chroot_vars)" artix-chroot /mnt /bin/bash -c 'sh chroot-part.sh ; rm chroot-part.sh ; exit'
+sudo cp chroot-part.sh /mnt/ && sudo artix-chroot /mnt /bin/bash -c 'sh chroot-part.sh ; rm chroot-part.sh ; exit'
 
 printf '\nInstallation finished.\n\nYou need to poweroff and remove the usb.\n'
