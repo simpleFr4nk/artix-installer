@@ -1,5 +1,12 @@
 #!/bin/sh
 
+# Timezone
+region_city=Europe/Rome
+# Hostname
+my_hostname=Arti
+# User
+user=ef
+
 # Set timezone
 ln -sf /usr/share/zoneinfo/$region_city /etc/localtime
 hwclock --systohc
@@ -21,9 +28,7 @@ echo "--Root password--"
 passwd
 
 # Add user
-useradd -m -G wheel $user
-usermod -a video $user
-usermod -a audio $user
+useradd -m -G wheel,video,audio $user
 echo "--$user password--"
 passwd $user
 
