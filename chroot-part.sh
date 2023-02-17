@@ -22,8 +22,8 @@ passwd
 
 # Add user
 useradd -m -G wheel $user
-useradd -m -G video $user
-useradd -m -G audio $user
+usermod -a video $user
+usermod -a audio $user
 echo "--$user password--"
 passwd $user
 
