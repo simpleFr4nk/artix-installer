@@ -3,7 +3,7 @@
 # Timezone
 region_city=Europe/Rome
 # Hostname
-my_hostname=Arti
+my_hostname=Leviathan
 # User
 user=ef
 
@@ -33,7 +33,7 @@ echo "--$user password--"
 passwd $user
 
 # Set doas privileges
-printf "permit persist :wheel\npermit nopass $user cmd reboot\npermit nopass $user cmd poweroff" >> /etc/doas.conf
+printf "permit persist :wheel\npermit nopass $user cmd reboot\npermit nopass $user cmd poweroff\n" >> /etc/doas.conf
 
 # Hostname
 printf "$my_hostname\n" > /etc/hostname
